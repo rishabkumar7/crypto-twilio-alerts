@@ -1,5 +1,6 @@
 #imports
 import os
+import json
 from twilio.rest import Client
 from pycoingecko import CoinGeckoAPI
 
@@ -15,11 +16,12 @@ client = Client(account_sid, auth_token)
 
 #get crypto prices (Bitcoin and Ethereum)
 
-#print (cg.get_price(ids='bitcoin,ethereum', vs_currencies='usd'))
 crypto_prices = cg.get_price(ids = 'bitcoin,ethereum', vs_currencies = 'usd')
 print (crypto_prices)
+crypto_prices_text = json.dumps(crypto_prices)
+print (crypto_prices_text)
 
 client.api.account.messages.create(
 to = to_number, 
 from_ = from_number,
-body="Hey There") #input text message
+body=crypto_prices_text) #input text message
