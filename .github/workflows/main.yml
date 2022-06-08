@@ -17,6 +17,8 @@ jobs:
               python-version: 3.8 
           - name: execute py script
             run: |
+              pip install twilio
+              pip install pycoingecko
               python main.py
             env:
               account_sid: ${{ secrets.key }}
