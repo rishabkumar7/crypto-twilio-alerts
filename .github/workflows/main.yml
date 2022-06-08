@@ -21,7 +21,7 @@ jobs:
               pip install pycoingecko
               python main.py
             env:
-              account_sid: ${{ secrets.key }}
+              account_sid: ${{ secrets.account_sid }}
               auth_token: ${{ secrets.auth_token }}
               to_number: ${{ secrets.to_number }}
               from_number: ${{ secrets.from_number }}
