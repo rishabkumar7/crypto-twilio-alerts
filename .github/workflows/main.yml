@@ -1,0 +1,26 @@
+name: run py script  
+
+on:
+  schedule:
+    - cron: "0 0 * * *" #runs at 00:00 UTC everyday
+    
+jobs:
+      build:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - name: checkout repo content
+            uses: actions/checkout@v2 # checkout the repository content to github runner.
+          - name: setup python
+            uses: actions/setup-python@v2
+            with:
+              python-version: 3.8 
+          - name: execute py script
+            run: |
+              python main.py
+            env:
+              account_sid: ${{ secrets.key }}
+              auth_token: ${{ secrets.auth_token }}
+              to_number: ${{ secrets.to_number }}
+              from_number: ${{ secrets.from_number }}
+              
