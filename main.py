@@ -3,8 +3,10 @@ import os
 import json
 from twilio.rest import Client
 from pycoingecko import CoinGeckoAPI
+from dotenv import load_dotenv
 
 cg = CoinGeckoAPI()
+load_dotenv()
 
 #variables
 account_sid = os.environ['account_sid']
